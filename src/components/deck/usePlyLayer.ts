@@ -33,7 +33,7 @@ export const usePLYLayer = (initialViewState: ViewState) => {
             }
 
             if (layer.data_url && !plyJsonCache.current[layer.data_url]) {
-              const plyJsonDataResponse = await fetch(`${layer.url}/get_json`)
+              const plyJsonDataResponse = await fetch(layer.data_url)
               const plyJsonData = await plyJsonDataResponse.json()
               plyJsonCache.current[layer.data_url] = plyJsonData
             }

@@ -26,18 +26,18 @@ export const usePointCloudLayer = (initialViewState: ViewState) => {
         xyzLayers
           .filter((layer) => layer.visible)
           .map(async (layer) => {
-            if (layer.url && !pointCloudCache.current[layer.url]) {
-              const response = await fetch(`${layer.url}/get_json`)
+            if (layer.data_url && !pointCloudCache.current[layer.data_url]) {
+              const response = await fetch(layer.data_url)
               const pointCloudData = await response.json()
-              pointCloudCache.current[layer.url] = pointCloudData
+              pointCloudCache.current[layer.data_url] = pointCloudData
             }
 
-            if (layer.url) {
-              const coordinateOrigin = pointCloudCache.current[layer.url]
+            if (layer.data_url) {
+              const coordinateOrigin = pointCloudCache.current[layer.data_url]
 
               return new PointCloudLayer({
                 id: `point-cloud-layer-${layer.id}`,
-                data: pointCloudCache.current[layer.url],
+                data: pointCloudCache.current[layer.data_url],
                 getColor: (d: DataType) => {
                   // Change color to grayish and set opacity
                   //   const gray = 128 // Grayish tone value
