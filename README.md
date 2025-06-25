@@ -62,6 +62,15 @@ To define env, create an `.env` file:
 
 `VITE_APP_API_GEOSERVER`: Point to `http://localhost:8080/geoserver/`
 
+`VITE_APP_API_USERNAME` and `VITE_APP_API_PASSWORD`: Credentials for the
+backend's basic authentication used when uploading files.
+
+### Uploading custom layers
+
+Use the **Upload** button in the top bar to submit GeoTIFF, DEM or OBJ files.
+After a successful upload the new layer will appear in the sidebar where it can
+be toggled on the map.
+
 ### Generating code from the OpenAPI 3.0 schemas of the backends
 
 To ensure that we test consistent with the latest backend changes, we grab the latest apis via its provided OpenAPI 3.0 spec.
