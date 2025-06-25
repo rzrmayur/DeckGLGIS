@@ -31,7 +31,7 @@ export const useGLTFLayer = (initialViewState: ViewState) => {
             }
 
             if (!gltfJsonCache.current[layer.data_url]) {
-              const glbJsonDataResponse = await fetch(`${layer.url}/get_json`)
+              const glbJsonDataResponse = await fetch(layer.data_url)
               const glbJsonData = await glbJsonDataResponse.json()
               gltfJsonCache.current[layer.data_url] = glbJsonData
             }

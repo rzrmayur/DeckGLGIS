@@ -34,7 +34,7 @@ export const useOBJLayer = (initialViewState: ViewState) => {
             }
 
             if (layer.data_url && !objJsonCache.current[layer.data_url]) {
-              const objJsonDataResponse = await fetch(`${layer.url}/get_json`)
+              const objJsonDataResponse = await fetch(layer.data_url)
               const objJsonData = await objJsonDataResponse.json()
               objJsonCache.current[layer.data_url] = objJsonData
             }
